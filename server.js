@@ -31,11 +31,11 @@ app.use(function validateBearerToken(req, res, next) {
   next()
 })
 
-app.use(function validateBearerToken(req, res, next) {
+/*app.use(function validateBearerToken(req, res, next) {
   console.log('validate bearer token middleware')
   // move to the next middleware
   next()
-})
+})*/
 
 function handleGetMovies(req, res) {
   let response = MOVIES;
@@ -63,7 +63,7 @@ function handleGetMovies(req, res) {
 app.get('/movie', handleGetMovies)
 
 // 4 parameters in middleware, express knows to treat this as error handler
-app.use((error, req, res, next) => {
+/*app.use((error, req, res, next) => {
   let response
   if (process.env.NODE_ENV === 'production') {
     response = { error: { message: 'server error' }}
@@ -71,7 +71,7 @@ app.use((error, req, res, next) => {
     response = { error }
   }
   res.status(500).json(response)
-})
+})*/
 
 //const PORT = 8000
 const PORT = process.env.PORT || 8000
